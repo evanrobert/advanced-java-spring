@@ -14,6 +14,11 @@ public class CodingNomadDemo {
                 CodingNomadConfiguration.class);
         CodingNomad codingNomad = ctx.getBean(CodingNomad.class);
         System.out.println(codingNomad.createAwesomeSoftware());
+    GameWeArePlaying gameWeArePlaying = ctx.getBean(GameWeArePlaying.class);
+    gameWeArePlaying.startGame();
+    gameWeArePlaying.endGame();
+
+
 
 
     }

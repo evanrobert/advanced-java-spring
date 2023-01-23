@@ -14,12 +14,12 @@ import java.text.MessageFormat;
         private final JDK jdk;
         private final IDE ide;
         private final Framework framework;
-        private final laptopSetup laptopSetup;
+        private final GameWeArePlaying laptopSetup;
         public String createAwesomeSoftware() {
             return MessageFormat
                     .format("This coding nomad is creating awesome software using, " +
                                     "LaptopSetup: ({0}:({1}:{2}) GB of Ram)  , IDEA: ({3}:{4}), JDK: ({5}:{6}), Framework:({7}:({8}),;",
-                            laptopSetup.getLaptop(),
+
                             laptop.getBrand(),
                             laptop.getRam(),
                             ide.getName(),
