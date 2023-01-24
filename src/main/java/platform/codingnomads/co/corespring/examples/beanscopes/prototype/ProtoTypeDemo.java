@@ -21,7 +21,7 @@ public class ProtoTypeDemo {
         SpringBean.SpringBeanNew springBeanNew = ctx.getBean(SpringBean.SpringBeanNew.class);
         System.out.println("hash code " + springBeanNew.hashCode());
         SpringBean.SpringBeanNew springBeanNew22 = ctx.getBean(SpringBean.SpringBeanNew.class);
-        System.out.println("hash code " + springBeanNew22.hashCode() + springBeanNew22.name);
+        System.out.println("hash code " + springBeanNew22.hashCode());
 
 
 
