@@ -1,5 +1,8 @@
 package platform.codingnomads.co.corespring.examples.beanscopes.prototype;
 
+import lombok.*;
+import org.apache.ibatis.annotations.ConstructorArgs;
+
 
 
 public class SpringBean {
