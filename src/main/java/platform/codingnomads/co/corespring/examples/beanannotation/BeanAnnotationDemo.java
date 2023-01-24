@@ -9,6 +9,7 @@ public class BeanAnnotationDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(BeanAnnotationConfig.class);
         ctx.refresh();
+        SampleBean sampleBean2 = ctx.getBean("friendly_bean_name2", SampleBean.class);
         SampleBean sampleBean = ctx.getBean("friendly_bean_name", SampleBean.class);
         ctx.close();
     }
