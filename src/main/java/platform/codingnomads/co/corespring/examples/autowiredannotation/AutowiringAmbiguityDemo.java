@@ -6,14 +6,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
-
+import org.springframework.stereotype.Component;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class AutowiringAmbiguityDemo {
 
     @Autowired
     DesktopComputer desktopComputer;
 
-
+ @Autowired
     LaptopComputer laptopComputer;
 
     public static void main(String[] args) {
@@ -25,6 +25,7 @@ public class AutowiringAmbiguityDemo {
         return args -> {
             System.out.println(laptopComputer);
             System.out.println(desktopComputer);
+
 
 
             };

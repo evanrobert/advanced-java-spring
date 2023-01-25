@@ -5,5 +5,5 @@ import org.springframework.stereotype.Component;
 
 @Component("sharpImages")
 @ToString
-public class SharpImages implements VideoCard{
+public class SharpImages implements GraphicsCard{
 }
