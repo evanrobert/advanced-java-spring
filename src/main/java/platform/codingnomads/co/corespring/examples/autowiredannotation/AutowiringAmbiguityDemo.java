@@ -13,6 +13,9 @@ public class AutowiringAmbiguityDemo {
     @Autowired
     DesktopComputer desktopComputer;
 
+
+    LaptopComputer laptopComputer;
+
     public static void main(String[] args) {
         SpringApplication.run(AutowiringAmbiguityDemo.class);
     }
@@ -20,7 +23,11 @@ public class AutowiringAmbiguityDemo {
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
+            System.out.println(laptopComputer);
             System.out.println(desktopComputer);
-        };
+
+
+            };
+        }
     }
-}
+
