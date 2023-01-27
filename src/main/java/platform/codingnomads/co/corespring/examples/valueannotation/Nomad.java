@@ -13,9 +13,13 @@ public class Nomad {
 
     private Integer age;
 
-    public Nomad(@Value("${nomad.name}") String name, @Value("${nomad.age}") Integer age) {
+    private String address;
+
+    public Nomad(@Value("${nomad.name}") String name, @Value("${nomad.age}") Integer age, @Value("${nomad.address}")
+    String address) {
         this.name = name;
         this.age = age;
+        this.address = address;
     }
 
     @Value("Hello!!")
@@ -37,7 +41,7 @@ public class Nomad {
     private Map<String, String> databaseValues;
 
     public String nomadIdentity() {
-        return name.concat(" ").concat(age.toString());
+        return name.concat(" ").concat(age.toString() + (" ").concat(address.toString()));
     }
 
     public String getGreeting() {
