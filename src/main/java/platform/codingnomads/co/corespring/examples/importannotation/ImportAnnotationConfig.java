@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 @Import(SimpleConfiguration.class)
 public class ImportAnnotationConfig {
     @Bean
-  public Learning learning(){return new Learning();
+  public Framework framework(){return new Framework();
 
     }
 }
