@@ -4,11 +4,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-@Configuration
-@Import(SimpleConfiguration.class)
-public class ImportAnnotationConfig {
-    @Bean
-  public Learning learning(){return new Learning();
 
-    }
+public class Learning {
+    public Learning (){
+        System.out.println("Learning is ready");}
+
+
+
 }
+

@@ -9,6 +9,8 @@ public class DependsOnDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(DependsOnDemoConfig.class);
         ctx.refresh();
+        final NewDEV newDEV = ctx.getBean(NewDEV.class);
+
         final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
         ctx.close();
     }
