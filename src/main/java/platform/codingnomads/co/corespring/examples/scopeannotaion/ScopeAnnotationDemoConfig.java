@@ -18,4 +18,10 @@ public class ScopeAnnotationDemoConfig {
     public PrototypeBean prototypeBean() {
         return new PrototypeBean();
     }
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public CoolBeans coolBeans() {return new CoolBeans();}
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public SpringBeans springBeans() {return new SpringBeans();}
 }

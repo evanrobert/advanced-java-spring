@@ -16,6 +16,11 @@ public class ScopeAnnotationDemo {
         System.out.println(singletonBean1.hashCode());
         System.out.println(singletonBean2.hashCode());
 
+        SpringBeans springBeans =ctx.getBean(SpringBeans.class);
+        CoolBeans coolBeans = ctx.getBean(CoolBeans.class);
+        System.out.println(springBeans.hashCode());
+        System.out.println(coolBeans.hashCode());
+
         final PrototypeBean prototypeBean1 = ctx.getBean(PrototypeBean.class);
         final PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
 
