@@ -25,7 +25,7 @@ public class Wheel {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL )
     @JoinTable(name = "Rim_to_Wheel",
-            inverseJoinColumns = @JoinColumn(name= "rim_color", referencedColumnName = "brand")
+            inverseJoinColumns = @JoinColumn(name= "what_is_rim_color", referencedColumnName = "brand")
     )
 
             private Set<Rim> rims;
