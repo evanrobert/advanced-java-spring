@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import platform.codingnomads.co.springdata.example.dml.usingqueryannotation.repositories.SoilService;
 
 @SpringBootApplication
 public class QueryApplication implements CommandLineRunner{
@@ -13,14 +14,18 @@ public class QueryApplication implements CommandLineRunner{
     }
 
     @Autowired
-    PlantService plantService;
+    SoilService soilService;
 
     @Override
     public void run(String... args) throws Exception {
 
-        plantService.saveStuff();
+      soilService.getStuffs();
 
-        plantService.getStuff();
+
+     soilService.find();
+     soilService.findID();
+     soilService.findDry();
+     soilService.last();
 
     }
 }
