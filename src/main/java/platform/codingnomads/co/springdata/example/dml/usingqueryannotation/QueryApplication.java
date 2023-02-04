@@ -21,11 +21,11 @@ public class QueryApplication implements CommandLineRunner{
 
       soilService.getStuffs();
 
-
-     soilService.find();
-     soilService.findID();
+      soilService.find();
+     soilService.create();
      soilService.findDry();
      soilService.last();
+
 
     }
 }

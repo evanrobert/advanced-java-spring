@@ -4,10 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.PrePersist;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -20,5 +19,38 @@ public class PrintEntity {
     private Long id;
 
     // write your methods here
+    @Column(nullable = false)
+    private Long userId;
 
-}
+    //object type authority is granted on
+    @Column(nullable = false)
+    private String objectType;
+
+    //id of object
+    @Column(nullable = false)
+    private Long objectId;
+
+    //permission granted (read, update, delete, share, owner)
+    @Column(nullable = false)
+    private String permission;
+    @PostUpdate
+    @PostConstruct
+    private void ObjectValid() {
+        objectId = Long.valueOf(objectType + permission);
+        System.out.println("object type is valid ");
+    }
+
+        @PreDestroy
+        @PostConstruct
+                public void Authentication(){
+        permission = String.valueOf(userId + id);
+            System.out.println("Permission was not granted");
+
+        }
+
+
+        
+    }
+
+
+

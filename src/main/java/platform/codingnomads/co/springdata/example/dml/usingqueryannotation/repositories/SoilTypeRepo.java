@@ -21,4 +21,5 @@ public interface SoilTypeRepo extends JpaRepository<SoilType, Long> {
     boolean findDry();
     @Query("SELECT p FROM Plant p WHERE id = ?1")
     Plant getPlantById(Long id, int a);
+
 }

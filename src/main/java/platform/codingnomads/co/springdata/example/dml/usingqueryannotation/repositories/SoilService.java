@@ -13,6 +13,16 @@ import java.util.ArrayList;
 public class SoilService {
     @Autowired
     SoilTypeRepo soilTypeRepo;
+    public void create(){
+
+        SoilType soilType1 = SoilType.builder().name("EVAN").ph(22).dry(false).build();
+        SoilType soilType2 = SoilType.builder().name("Giselle").ph(23).dry(false).build();
+        SoilType soilType3 = SoilType.builder().name("ELIJAH").ph(24).dry(false).build();
+        soilTypeRepo.save(soilType1);
+        soilTypeRepo.save(soilType2);
+        soilTypeRepo.save(soilType3);
+
+    }
 
 
     public void getStuffs() {
@@ -29,14 +39,14 @@ public class SoilService {
         System.out.println(soils);
     }
 
-    public void findID() {
-        System.out.println("--------");
-long x =   soilTypeRepo.findIdOfPlants();
-        System.out.println(x);
+//    public void findID() {
+//        System.out.println("--------");
+//long x =   soilTypeRepo.findIdOfPlants();
+//        System.out.println(x);
 
 
 
-        }
+
         public void findDry(){
             System.out.println("------------");
             boolean a = soilTypeRepo.findDry();
@@ -46,7 +56,10 @@ long x =   soilTypeRepo.findIdOfPlants();
        Plant q =  soilTypeRepo.getPlantById(1l,2);
             System.out.println(q);
         }
-    }
+
+
+        }
+
 
 
 
