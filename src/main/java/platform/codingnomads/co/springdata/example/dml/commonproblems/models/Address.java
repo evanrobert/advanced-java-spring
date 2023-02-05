@@ -1,6 +1,7 @@
 package platform.codingnomads.co.springdata.example.dml.commonproblems.models;
 
 import lombok.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @ToString
+@Transactional
 public class Address {
 
     @Id

@@ -22,12 +22,12 @@ public class TransactionalApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        @Transactional I
+   //     @Transactional I
 
         pointService.foo();
       pointService.doSomeWork();
 
-       @Transactional II
+     //  @Transactional II
 
       pointService.timeOutAfter5();
        pointService.triggerTimeout();
