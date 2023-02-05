@@ -94,4 +94,18 @@ public class PointService {
         throw new InterruptedException();
         //changes still commit
     }
+    @Transactional(rollbackFor = InterruptedException.class)
+    public void rollbackCustom() throws InterruptedException{
+        Point a = repo.getOne(3L);
+        a.setX(22);
+        a.setY(22);
+        repo.save(a);
+        throw new InterruptedException();
+    }
+    @Transactional(readOnly = true)
+    public void readOnlyCustom() throws Exception {
+        Point b = repo.getById(1L);
+        throw  new Exception();
+
+    }
 }
