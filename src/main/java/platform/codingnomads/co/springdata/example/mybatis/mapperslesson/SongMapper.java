@@ -50,4 +50,12 @@ public interface SongMapper {
             "WHERE artist_name = #{artistName} AND album_name = #{albumName};")
     void deleteSongsByAlbumAndArtist(String artistName, String albumName);
 
+
+    @Select("SELECT * " + " FROM mybatis.songs " +
+            "WHERE album_name = #{param2};")
+           int getAlbums (String albumName);
+
+    @Delete("DELETE FROM mybatis.songs WHERE name = #{param1};")
+  void deleteName(String name);
+
 }

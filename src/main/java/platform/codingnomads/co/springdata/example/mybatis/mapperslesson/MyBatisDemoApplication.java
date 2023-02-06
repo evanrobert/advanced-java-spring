@@ -40,8 +40,23 @@ public class MyBatisDemoApplication {
             song2.setArtist_name("Gus Dapperton");
             song2.setSong_length(279);
 
+            Song song5 = new Song();
+            song5.setName("Otherside");
+            song5.setAlbum_name("Red hot chili peppers");
+            song5.setArtist_name("Red hot chili peppers");
+            song5.setSong_length(300);
+
+            Song song4 = new Song();
+            song4.setName("Backseat Freestyle");
+            song4.setAlbum_name("Maad city");
+            song4.setArtist_name("Kendrick lamar");
+            song4.setSong_length(250);
+
             songMapper.insertNewSong(song1);
             songMapper.insertNewSong(song2);
+            songMapper.insertNewSong(song5);
+            songMapper.insertNewSong(song4);
+
 
             Song song3 = songMapper.getSongById(1L);
 
@@ -50,6 +65,12 @@ public class MyBatisDemoApplication {
             longSongs.forEach(System.out::println);
 
             System.out.println(song3.toString());
+            songMapper.deleteName("Backseat Freestyle");
+            songMapper.getSongsWithLengthGreaterThan(220);
+            songMapper.getSongsByArtist("Red hot chili peppers");
+            songMapper.getAlbums("Orca");
+
+
         };
     }
 }
