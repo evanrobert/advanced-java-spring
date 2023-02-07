@@ -13,26 +13,25 @@ public class ResultsDemoApplication {
     }
 
     @Bean
-    public CommandLineRunner loadInitialData(SongMapper songMapper) {
+    public CommandLineRunner loadInitialData(FoodMapper foodMapper) {
         return (args) -> {
             //notice the setter names have changed to match Java naming conventions
-            Song song1 = new Song();
-            song1.setName("Minnesota, WI");
-            song1.setAlbumName("Bon Iver");
-            song1.setArtistName("Bon Iver");
-            song1.setSongLength(232);
 
-            Song song2 = new Song();
-            song2.setName("Post Humorous");
-            song2.setAlbumName("Orca");
-            song2.setArtistName("Gus Dapperton");
-            song2.setSongLength(279);
+            Food food = new Food();
+            food.setType("Italian");
+            food.setCost(15);
+           food.setServingsize(3.0);
+            food.setName("Pizza");
+            foodMapper.insertNewFood(food);
+            Food food1 = new Food();
+            food1.setType("mexican");
+            food1.setCost(7);
+            food1.setServingsize(1);
+            food1.setName("Tacos");
+            foodMapper.insertNewFood(food1);
 
-            songMapper.insertNewSong(song1);
-            songMapper.insertNewSong(song2);
+            foodMapper.uodate(food1);;
 
-            Song song3 = songMapper.getSongById(1L);
-            System.out.println(song3.toString());
         };
     }
 }
