@@ -2,6 +2,7 @@ package platform.codingnomads.co.springdata.example.mybatis.oneandmany.mappers;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
+import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Album;
 import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Artist;
 import platform.codingnomads.co.springdata.example.mybatis.oneandmany.models.Song;
 
@@ -12,7 +13,7 @@ public interface SongMapper {
 
     @Insert("INSERT INTO mybatis.songs " +
             "(name, artist_id, album_name, song_length) " +
-            "VALUES (#{name}, #{artist.id}, #{albumName}, #{songLength});")
+            "VALUES (#{name}, #{artist.id}, #{album}, #{songLength});")
     @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id")
     void insertNewSong(Song song);
 
@@ -22,8 +23,21 @@ public interface SongMapper {
     @Results(
             id = "songResultMap",
             value = {
-                    @Result(property = "albumName", column = "album_name"),
+                    @Result(property = "album", column = "album_name"),
                     @Result(property = "songLength", column = "song_length"),
+                    @Result(
+                            property = "album",
+                            column = "album id ",
+                            javaType = Album.class,
+                            one = @One(
+                                    select = "platform.codingnomads.co.springdata.example.mybatis.oneandmany.mappers.AlbumMapper.getAlbumById",
+                            fetchType = FetchType.LAZY
+                    )
+                    ),
+
+
+
+
                     @Result(
                             //property to map to
                             property = "artist",
@@ -32,6 +46,7 @@ public interface SongMapper {
                             one = @One(
                                     select = "platform.codingnomads.co.springdata.example.mybatis.oneandmany.mappers.ArtistMapper.getArtistByIdWithoutSongs",
                                     fetchType = FetchType.LAZY
+
                             )
                     )
             }
