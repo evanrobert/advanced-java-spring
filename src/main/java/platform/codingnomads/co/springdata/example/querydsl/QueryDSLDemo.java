@@ -65,16 +65,48 @@ public class QueryDSLDemo implements CommandLineRunner {
 
         routesByCodeAndOrigin.forEach(System.out::println);
 
-        //query the database straight-up without using repository
+        // query the database straight-up without using repository
         QArea qArea = QArea.area;
         JPAQuery<?> query = new JPAQuery<>(entityManager);
         Area area = query.select(qArea)
                 .from(qArea)
                 .where(qArea.code.eq("A"))
+
+
                 .fetchOne();
         System.out.println(area);
 
+        QArea qArea1 = QArea.area;
+        JPAQuery<?> query1 = new JPAQuery<>(entityManager);
+        List<Area> areas2 = areaRepository.saveAll(Arrays.asList(
+                Area.builder().name("EVAN").code("ABC").id(1L).build(),
+                Area.builder().name("ELIJAH").code("EFG").id(2L).build(),
+                Area.builder().name("BILL").code("HIJ").id(3L).build()
+
+        ));
+        System.out.println(areas2);
+        routes.stream().sorted().distinct();
+        routeRepository.findAll().listIterator().hasNext();
+        System.out.println(routeRepository.findAll());
+        System.out.println(routeRepository.findById(1L));
+
+
+
+
+
+
+
+
+
+
+
         routeRepository.deleteAll();
-        areaRepository.deleteAll();
+       areaRepository.deleteAll();
+
+
+
+
+
     }
+
 }
