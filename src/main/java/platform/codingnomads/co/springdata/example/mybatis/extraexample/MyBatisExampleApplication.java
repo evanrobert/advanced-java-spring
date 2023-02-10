@@ -8,6 +8,12 @@ import platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.
 import platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.ImageMapper;
 import platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.LessonMapper;
 import platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.SectionMapper;
+import platform.codingnomads.co.springdata.example.mybatis.extraexample.models.Chapter;
+import platform.codingnomads.co.springdata.example.mybatis.extraexample.models.Image;
+import platform.codingnomads.co.springdata.example.mybatis.extraexample.models.Lesson;
+import platform.codingnomads.co.springdata.example.mybatis.extraexample.models.Section;
+
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class MyBatisExampleApplication implements CommandLineRunner {
@@ -41,6 +47,32 @@ public class MyBatisExampleApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+sectionMapper.insertNewSection("section 1");
+sectionMapper.insertNewSection("section 2");
+chapterMapper.insertNewChapter("chapter",3L);
+chapterMapper.insertNewChapter("THIS IS ALSO A CHAPTER ",4L);
+        lessonMapper.insertNewLesson("new lesson practice", "WE ARE MAING AN EXAMPLE",5L);
+        chapterMapper.deleteChapterById(5L);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
