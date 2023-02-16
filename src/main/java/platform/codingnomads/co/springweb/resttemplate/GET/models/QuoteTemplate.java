@@ -5,4 +5,6 @@ import lombok.Data;
 @Data
 public class QuoteTemplate {
     private String q;
+    private String a;
+
 }

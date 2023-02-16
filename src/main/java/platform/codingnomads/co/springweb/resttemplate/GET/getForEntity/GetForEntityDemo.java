@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import platform.codingnomads.co.springweb.resttemplate.GET.models.BoredTemplate;
 import platform.codingnomads.co.springweb.resttemplate.GET.models.QuoteTemplate;
 
 import java.util.Arrays;
@@ -25,11 +26,11 @@ public class GetForEntityDemo {
     @Bean
     public CommandLineRunner run() throws Exception {
         return args -> {
-            ResponseEntity<QuoteTemplate[]> responseEntity =
-                    restTemplate.getForEntity("https://zenquotes.io/api/random", QuoteTemplate[].class);
+            ResponseEntity<BoredTemplate[]> responseEntity =
+                    restTemplate.getForEntity("http://www.boredapi.com/api/activity/", BoredTemplate[].class);
 
             if (responseEntity.getStatusCode().equals(HttpStatus.OK) && responseEntity.getBody() != null) {
-                QuoteTemplate[] quoteTemplate = responseEntity.getBody();
+                BoredTemplate[] quoteTemplate = responseEntity.getBody();
                 System.out.println(Arrays.toString(quoteTemplate));
             } else {
                 System.out.println("Something went wrong! The response was not marked with status code 200");
