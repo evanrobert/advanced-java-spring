@@ -33,17 +33,18 @@ public class PostForLocationMain {
                     .userId(380)
                     .completed(false)
                     .build();
+            Task task2 = Task.builder().name("Learning post").description("working through spring web").userId(381).completed(false).build();
 
             //use postForLocation() to get the URL for the new resource
             URI returnedLocation = restTemplate
                     .postForLocation("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
+            URI uri = restTemplate.postForLocation("http://demo.codingnomads.co:8080/tasks_api/tasks", task2, ResponseObject.class);
 
             System.out.println(Objects.requireNonNull(returnedLocation));
+            System.out.println(Objects.requireNonNull(uri));
 
-            ResponseEntity<?> responseEntity = restTemplate
-                    .postForEntity("http://demo.codingnomads.co:8080/tasks_api/tasks", newTask, ResponseObject.class);
 
-            System.out.println(responseEntity.getHeaders().get("Location"));
+
         };
     }
 }
