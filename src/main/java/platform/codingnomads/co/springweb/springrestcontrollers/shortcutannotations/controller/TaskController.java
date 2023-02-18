@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import platform.codingnomads.co.springweb.springrestcontrollers.shortcutannotations.model.Task;
 import platform.codingnomads.co.springweb.springrestcontrollers.shortcutannotations.repostiory.TaskRepository;
 
+import javax.print.attribute.standard.Media;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -32,6 +33,15 @@ public class TaskController {
         return ResponseEntity.created(new URI("/api/tasks/" + savedTask.getId()))
                 .body(savedTask);
     }
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public  ResponseEntity<Task> updateTask(@RequestBody Task task) throws URISyntaxException {
+        if (StringUtils.isEmpty(task.getName()) || task.getId() != null) {
+            throw new IllegalStateException();
+        }
+        final Task updatedTask = taskRepository.save(task);
+        return ResponseEntity.created(new URI("/api/tasks/" + updatedTask.getId())).body(updatedTask);
+    }
+
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Task> getTask(@PathVariable Long id) {
