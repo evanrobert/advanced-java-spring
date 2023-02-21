@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import platform.codingnomads.co.springweb.gettingdatafromclient.requestparam.models.Task;
 
+import javax.print.attribute.standard.Media;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -44,4 +45,16 @@ public class TaskController {
                 .mapToObj(i -> Task.builder().id((long) i).name(names.get(i)).build())
                 .collect(Collectors.toList());
     }
-}
+    @GetMapping(value= "/getName",produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getName(@RequestParam( name =  "name",required = false, defaultValue = "10") Long task) {
+        return "ID: " + task;
+    }
+        @GetMapping(value = "/example/default",produces = MediaType.APPLICATION_JSON_VALUE)
+                public String example(@RequestParam(name = "Example",defaultValue = "22")Long id ){
+            return "ID: " + id;
+        }
+
+        }
+
+
+
