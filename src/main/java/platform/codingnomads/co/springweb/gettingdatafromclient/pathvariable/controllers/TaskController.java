@@ -48,5 +48,17 @@ public class TaskController {
     public String pathVariableIsNotEncoded(@PathVariable String name) {
         return name;
     }
-}
+    @GetMapping(value = "/test/{id}/{name}/{completed}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public Task findTask(@PathVariable Map<String,String>path){
+        return Task.builder()
+                .id(Long.valueOf(path.get("id"))).name(path.get("name"))
+                .completed(Boolean.parseBoolean(path.get("completed")))
+                .build();}
+        @GetMapping(value = "/test2/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+                public Long getID(@PathVariable long id){return id;}
+    @GetMapping(value = "/test3", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String test3(@RequestParam String name){return name;}
+        }
+
+
 
