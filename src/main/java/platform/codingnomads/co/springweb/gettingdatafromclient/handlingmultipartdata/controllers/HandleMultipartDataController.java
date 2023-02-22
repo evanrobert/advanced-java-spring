@@ -135,6 +135,50 @@ public class HandleMultipartDataController {
                 .size(file.getSize())
                 .build());
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> duplicateFileID(@PathVariable(name = "id") Long fileId, @RequestBody MultipartFile file) {
+
+        final Optional<DatabaseFile> optional = fileRepository.findById(fileId);
+
+        if (optional.isEmpty()) {
+            return ResponseEntity.badRequest()
+                    .body(new NoSuchFileException("The ID you passed in was not valid. " +
+                            "Where you trying to upload a new file?"));
+        } else if (file == null) {
+            return ResponseEntity.badRequest()
+                    .body(new NoSuchFileException("No file was received, please try again."));
+        }
+
+        DatabaseFile databaseFile = optional.get();
+        try {
+            databaseFile.setData(file.getBytes());
+            databaseFile.setFileName(file.getOriginalFilename());
+            databaseFile.setFileType(file.getContentType());
+        } catch (IOException ex) {
+            return ResponseEntity.badRequest()
+                    .body(new IllegalStateException("Sorry could not update file "
+                            + file.getOriginalFilename() + "Try again!", ex));
+        }
+
+        final DatabaseFile savedFile = fileRepository.save(databaseFile);
+        final DatabaseFile savedfile2 = fileRepository.save(databaseFile);
+
+        savedFile.setDownloadUrl(ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/download/")
+                .path(String.valueOf(savedFile.getId()))
+                .toUriString());
+        savedfile2.setDownloadUrl(ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/images")
+                .path(String.valueOf(savedFile.getId()))
+                .toUriString());
+
+        return ResponseEntity.ok(FileResponse.builder()
+                .fileName(databaseFile.getFileName())
+                .fileDownloadUri(savedFile.getDownloadUrl())
+                .fileType(file.getContentType())
+                .size(file.getSize())
+                .build());
+    }
 
     //@DeleteMapping("/deleteFile/{id}")
     @DeleteMapping("/{id}")
