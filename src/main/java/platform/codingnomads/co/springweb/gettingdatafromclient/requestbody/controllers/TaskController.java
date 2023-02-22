@@ -48,4 +48,40 @@ public class TaskController {
             return ResponseEntity.ok().body(message);
         }
     }
+
+    @PostMapping(value = "/test", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Task> test1(@RequestBody(required = false) Task task) throws URISyntaxException {
+        if (StringUtils.isEmpty(task.getName()) || task.getCompleted() == null) {
+            task.setCreatedAt(null);
+            return ResponseEntity.badRequest().body(task);
+        }
+        final Task save = taskRepository.save((Task.builder().completed(task.getCompleted()).name(task.getName()).build()));
+
+        return ResponseEntity.created(new URI("/test" + save.getId())).body(save);
+    }
+
+    @PostMapping(value = "/api/tasks/test2", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> test2(@RequestBody Task task) throws URISyntaxException {
+        if (StringUtils.isEmpty(task.getName()) || task.getCompleted() == null) {
+
+            return ResponseEntity.badRequest().body(task);
+        }
+        final Task save2 = taskRepository.save(Task.builder().name(task.getName()).completed(task.getCompleted()).build());
+        return ResponseEntity.created(new URI("/api/tasks/tedst2")).body(save2);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
