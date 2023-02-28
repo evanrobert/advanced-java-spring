@@ -18,6 +18,10 @@ public class HomeController {
         model.addAttribute("name", "Developer");
         model.addAttribute("language", "Java");
         model.addAttribute("framework", "Spring");
+        model.addAttribute("JDK","11");
+        model.addAttribute("Another","line");
+        model.addAttribute("example","line");
+        model.addAttribute("final","line");
         return "model-page";
     }
 
