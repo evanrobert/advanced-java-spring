@@ -1,4 +1,8 @@
 function greeting() {
-    alert("Hello Spring Developer!!");
-}
+    alert("Hello cool Spring Developer!!");
+    }
+    function practice(){
+    alert("this is practice... HI")
+    }
+
 

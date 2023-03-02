@@ -9,5 +9,8 @@ public class IndexController {
     public String index() {
         return "thymeleaf-include-js-css";
     }
+
+    @GetMapping(value = "/practice")
+    public String index2(){return "thymeleaf-include-js-css";}
 }
 
