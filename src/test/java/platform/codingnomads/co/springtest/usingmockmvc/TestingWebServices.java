@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.theInstance;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -19,6 +21,7 @@ public class TestingWebServices {
 
     @Autowired
     MockMvc mockMvc;
+
 
     @Test
     public void helloShouldReturnDefaultMessage() throws Exception {
@@ -49,4 +52,21 @@ public class TestingWebServices {
                 //the view name expected is greeting
                 .andExpect(view().name("greeting"));
     }
-}
+    @Test
+    public void NotFound()throws Exception{
+        mockMvc.perform(get("/hey"))
+                .andDo(print())
+                .andExpect(view().name("greeting2"));
+    }
+    @Test
+    public void testMaths() {
+        HomeController controller = new HomeController();
+        int result = controller.maths(10, 10);
+        assertEquals(100, result);
+    }
+    @Test
+    public void warning()throws Exception{
+        mockMvc.perform(get("/warning")).andExpect(status().isOk()).andDo(print()).andExpect(view().name("greeting2"));
+    }
+    }
+

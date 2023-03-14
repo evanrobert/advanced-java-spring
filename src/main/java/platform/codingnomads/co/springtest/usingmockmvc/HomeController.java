@@ -20,5 +20,24 @@ public class HomeController {
     @ResponseBody
     public String greet() {
         return "Hello Back";
+
+    }
+
+    @GetMapping("/hey")
+    public String greetings(Model  model) {
+model.addAttribute("name","evan");
+        return "greeting2";
+
+    }
+    @GetMapping("/Hello")
+    @ResponseBody
+    public int maths(int a, int b){
+
+        return a * b;
+    }
+    @GetMapping("/warning")
+    public String warning(Model model){
+        model.addAttribute("name","Warning");
+        return "greeting2";
     }
 }
