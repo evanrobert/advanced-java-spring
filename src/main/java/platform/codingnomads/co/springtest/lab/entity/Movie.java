@@ -21,4 +21,6 @@ public class Movie {
 
     @Column(name = "rating")
     private Double rating;
+
+
 }
