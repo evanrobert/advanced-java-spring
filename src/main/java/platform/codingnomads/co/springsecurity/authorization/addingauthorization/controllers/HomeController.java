@@ -4,6 +4,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.annotation.security.RolesAllowed;
+
 @Controller
 public class HomeController {
 
@@ -27,6 +29,19 @@ public class HomeController {
     public String testMas(int id){
         return "authorization/home";
     }
+
+    @GetMapping("/admin1")
+    @RolesAllowed("admin")
+    public String testAdmin1(){return "authorization/admin";}
+    @GetMapping("/superu1")
+    @RolesAllowed("superu")
+    public String superUPage2(){return "authorization/superu";}
+    @GetMapping("/home")
+    public String homePage2() {
+        return "authorization/home";
+    }
+
+
 
     /*
         Method Security Annotations

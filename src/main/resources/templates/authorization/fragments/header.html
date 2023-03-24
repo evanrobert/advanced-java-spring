@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <body>
 <th:block th:fragment="header">
     <nav class="navbar navbar-inverse navbar-static-top">
@@ -8,6 +8,7 @@
                 <a class="navbar-brand" th:href="@{/}">
                     <img th:src="@{/img/logo.png}" alt="codingnomads logo"/>
                 </a>
+
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -19,6 +20,15 @@
                     </li>
                     <li class="active">
                         <a th:href="@{/superu}">/superu</a>
+
+                    <li class="active">
+                    <a th:href="@{/home}">Home</a>
+                                </li>
+                                <li class="active" sec:authorize="hasRole('ADMIN')">
+                                    <a th:href="@{/admin1}">/admin1</a>
+                                </li>
+                                <li class="active" sec:authorize="hasRole('SUPERU')">
+                                    <a th:href="@{/superu1}">/superu1</a>
                     </li>
                 </ul>
             </div>
