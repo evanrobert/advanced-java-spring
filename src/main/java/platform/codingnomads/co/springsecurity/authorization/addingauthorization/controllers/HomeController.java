@@ -31,7 +31,7 @@ public class HomeController {
     }
 
     @GetMapping("/admin1")
-    @RolesAllowed("admin")
+   @RolesAllowed("admin")
     public String testAdmin1(){return "authorization/admin";}
     @GetMapping("/superu1")
     @RolesAllowed("superu")
