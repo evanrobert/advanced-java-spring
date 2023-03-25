@@ -35,5 +35,15 @@ public class UserController {
         userService.deleteUser(id);
         return ("deleted user with id: " + id);
     }
-
+   @PostMapping("user/post/{email}")
+    @ResponseBody
+    @PreAuthorize("hasPermission(#email,'platform.codingnomads.co.springsecurity.authorization.custompermissions.models.User', 'POST')")
+            public String changeEmail(@PathVariable String email){
+        userService.changeEmail(email);
+        return("changed email with" + email);
+   }
+   @GetMapping("/user/email")
+    @ResponseBody
+ @PostAuthorize("hasPermission(returnObject, 'READ')")
+    public User getUserByEmail(@RequestParam String email){return userService.getUser("is this your email" + email);}
 }
