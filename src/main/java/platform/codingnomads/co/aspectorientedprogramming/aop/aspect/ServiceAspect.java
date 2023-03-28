@@ -13,7 +13,7 @@ public class ServiceAspect {
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceAspect.class);
 
     @Pointcut(value = "execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.*(..))")
-    private void logAllStudentServiceMethods() { }
+    private void logAllStudentServiceMethods(){}
 
     @Before("logAllStudentServiceMethods()")
     public void logBeforeAdvice(JoinPoint joinPoint) {
@@ -36,4 +36,14 @@ public class ServiceAspect {
         LOGGER.info("After Returning Advice: " + " Method Name: = " + jp.getSignature().getName());
         LOGGER.info("Result: = " + students);
     }
+    @Before(value = "execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.saveStudent())")
+    public void logBeforeAdvice2(JoinPoint joinPoint){
+        LOGGER.info("Before Advice :" + joinPoint.getSignature().getName());
+    }
+    @After("execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.saveStudent())")
+    public void logAfter2(JoinPoint joinPoint){
+        LOGGER.info("After Advice:" + joinPoint.getSignature().getName());
+    }
+
 }
+
