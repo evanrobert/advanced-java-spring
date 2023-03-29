@@ -3,6 +3,7 @@ package platform.codingnomads.co.aspectorientedprogramming.aop.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import platform.codingnomads.co.aspectorientedprogramming.aop.aspect.Loggable;
+import platform.codingnomads.co.aspectorientedprogramming.aop.aspect.TimeElapsed;
 import platform.codingnomads.co.aspectorientedprogramming.aop.aspect.TrackMethodExecutionTime;
 import platform.codingnomads.co.aspectorientedprogramming.aop.model.Student;
 import platform.codingnomads.co.aspectorientedprogramming.aop.repository.StudentRepository;
@@ -17,12 +18,14 @@ public class StudentService {
 
 //    @TrackMethodExecutionTime
 //    @Loggable
+    @TimeElapsed
     public List<Student> fetchAllStudents() {
         return studentRepository.findAll();
     }
 
 //    @TrackMethodExecutionTime
 //    @Loggable
+    @TimeElapsed
     public List<Student> saveAllStudents(List<Student> students) {
         return studentRepository.saveAll(students);
     }
