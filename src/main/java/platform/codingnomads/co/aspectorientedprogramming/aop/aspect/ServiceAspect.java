@@ -17,7 +17,7 @@ public class ServiceAspect {
 
     @Before("logAllStudentServiceMethods()")
     public void logBeforeAdvice(JoinPoint joinPoint) {
-        LOGGER.info("Before Advice : " + joinPoint.getSignature().getName());
+        LOGGER.info("Before Advice : " + joinPoint.getKind().toString());
     }
 
     @Before("execution(* platform.codingnomads.co.aspectorientedprogramming.aop.service.StudentService.fetchAllStudents())")
