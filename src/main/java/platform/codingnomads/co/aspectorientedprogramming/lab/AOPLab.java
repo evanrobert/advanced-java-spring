@@ -9,7 +9,7 @@ import platform.codingnomads.co.aspectorientedprogramming.lab.service.GreetingSe
 
 @SpringBootApplication
 @RequiredArgsConstructor
-@ComponentScan
+
 public class AOPLab implements CommandLineRunner {
 
     public final GreetingService greetingService;

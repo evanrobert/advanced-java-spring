@@ -1,6 +1,7 @@
 package platform.codingnomads.co.aspectorientedprogramming.lab.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
+import platform.codingnomads.co.aspectorientedprogramming.lab.aspect.Printable;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
@@ -10,14 +11,14 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class PrintableAspect {
-    @Pointcut("@annotation(platform.codingnomads.co.aspectorientedprogramming.lab.annotations.Printable)")
+    @Pointcut("@annotation(platform.codingnomads.co.aspectorientedprogramming.lab.aspect.Printable)")
     public void printableAnnotation() {
     }
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PrintableAspect.class);
 
-    @Pointcut("@annotation(platform.codingnomads.co.aspectorientedprogramming.lab.annotations.Printable)")
+    @Pointcut("@annotation(platform.codingnomads.co.aspectorientedprogramming.lab.aspect.Printable)")
     public void printableMethods() {}
 
     @Before("printableMethods()")

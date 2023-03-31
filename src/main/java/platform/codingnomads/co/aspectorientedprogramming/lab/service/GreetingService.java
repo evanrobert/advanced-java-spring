@@ -10,8 +10,9 @@ public class GreetingService {
         return "Hello Spring Developer!";
     }
 
-    @Printable("this is our printable Annotation")
+    @Printable(value = "this is our printable Annotation")
     public String hwMethod() {
         return "this is for AOP Assignment";
     }
+
 }
